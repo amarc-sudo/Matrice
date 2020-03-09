@@ -65,8 +65,8 @@ public class DenseMatrix {
 	 * @throws ExceptMatrix
 	 */
 	public double getElement(int row, int col) throws ExceptMatrix{
-		if(row < nCol ) {
-			if(row < nRow) {
+		if(row < nRow ) {
+			if(col < nCol) {
 				return vals[row][col];
 			}
 			else
@@ -83,8 +83,8 @@ public class DenseMatrix {
 	 * @throws ExceptMatrix
 	 */
 	public void setElement(int row, int col, double number) throws ExceptMatrix{
-		if(row < nCol ) {
-			if(row < nRow) {
+		if(row < nRow ) {
+			if(col < nCol) {
 				vals[row][col] = number;
 			}
 			else
@@ -171,6 +171,17 @@ public class DenseMatrix {
 		for(int row = 0 ; row < this.nRow ; row++ ) {
 			for(int col = 0 ; col < this.nCol ; col++) {
 				returnMatrix.setElement(row, col, this.getElement(row, col)*s);
+			}
+		}
+		return returnMatrix;
+		
+	}
+	public DenseMatrix transpose() throws ExceptMatrix {
+
+		DenseMatrix returnMatrix = new DenseMatrix(this.nCol, this.nRow);
+		for(int row = 0 ; row < this.nRow ; row++ ) {
+			for(int col = 0 ; col < this.nCol ; col++) {
+				returnMatrix.setElement(col, row, this.getElement(row, col));
 			}
 		}
 		return returnMatrix;

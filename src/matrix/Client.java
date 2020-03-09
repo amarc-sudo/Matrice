@@ -4,9 +4,10 @@ public class Client {
 
 	public static void main(String[] args) throws ExceptMatrix {
 		// TODO Auto-generated method stub
-		DenseMatrix matrice = new DenseMatrix(3,3);
+		DenseMatrix matrice = new DenseMatrix(3,2);
 		matrice.write();
-		System.out.print(matrice.toString());
-		System.out.print(matrice.sum(matrice).toString());
+		System.out.println(matrice.toString());
+		System.out.println(matrice.sum(matrice).toString());
+		System.out.println(matrice.transpose().toString());
 	}
 }
