@@ -106,18 +106,39 @@ public class DenseMatrix {
 	}
 	/**
 	 * Return a string of format :
-	 * 0, 0
-	 * 0, 0
+	 * [0, 0]
+	 * [0, 0]
 	 */
 	public String toString() {
 		String matrix = new String();
 		for(int row = 0 ; row < this.nRow ; row++ ) {
+			matrix += "[ ";
 			for(int col = 0 ; col < this.nCol ; col++) {
 			matrix += vals[row][col] +", " ;
 			}
-			matrix += "\n";
+			matrix += " ]\n";
 		}
 		
 		return matrix;
 	}
+	/**
+	 * A method for do the sum of two matrix with same dimension
+	 * @param b
+	 * @return
+	 * @throws ExceptMatrix
+	 */
+	public DenseMatrix sum(DenseMatrix b) throws ExceptMatrix{
+		if(b.getRowDimension() == this.getRowDimension() && b.getColDimension() == this.getColDimension()) {
+			DenseMatrix returnMatrix = new DenseMatrix(this.nRow, this.nCol);
+			for(int row = 0 ; row < this.nRow ; row++ ) {
+				for(int col = 0 ; col < this.nCol ; col++) {
+					returnMatrix.setElement(row, col, this.getElement(row, col)+b.getElement(row, col));
+				}
+			}
+			return returnMatrix;
+		}
+		else
+			throw new ExceptMatrix("The dimesion of the two matrix is not same");
+	}
+	
 }
