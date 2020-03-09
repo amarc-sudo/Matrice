@@ -140,5 +140,40 @@ public class DenseMatrix {
 		else
 			throw new ExceptMatrix("The dimesion of the two matrix is not same");
 	}
-	
+	/**
+	 * substract matrix b to this matrix
+	 * @param b
+	 * @return
+	 * @throws ExceptMatrix
+	 */
+	public DenseMatrix minus(DenseMatrix b) throws ExceptMatrix{
+		if(b.getRowDimension() == this.getRowDimension() && b.getColDimension() == this.getColDimension()) {
+			DenseMatrix returnMatrix = new DenseMatrix(this.nRow, this.nCol);
+			for(int row = 0 ; row < this.nRow ; row++ ) {
+				for(int col = 0 ; col < this.nCol ; col++) {
+					returnMatrix.setElement(row, col, this.getElement(row, col)-b.getElement(row, col));
+				}
+			}
+			return returnMatrix;
+		}
+		else
+			throw new ExceptMatrix("The dimesion of the two matrix is not same");
+	}
+	/**
+	 * method for multiply this matrice by a Scalaire
+	 * @param s
+	 * @return
+	 * @throws ExceptMatrix
+	 */
+	public DenseMatrix mult(double s) throws ExceptMatrix {
+
+		DenseMatrix returnMatrix = new DenseMatrix(this.nRow, this.nCol);
+		for(int row = 0 ; row < this.nRow ; row++ ) {
+			for(int col = 0 ; col < this.nCol ; col++) {
+				returnMatrix.setElement(row, col, this.getElement(row, col)*s);
+			}
+		}
+		return returnMatrix;
+		
+	}
 }
