@@ -176,8 +176,12 @@ public class DenseMatrix {
 		return returnMatrix;
 		
 	}
+	/**
+	 * Transpose this matrix
+	 * @return
+	 * @throws ExceptMatrix
+	 */
 	public DenseMatrix transpose() throws ExceptMatrix {
-
 		DenseMatrix returnMatrix = new DenseMatrix(this.nCol, this.nRow);
 		for(int row = 0 ; row < this.nRow ; row++ ) {
 			for(int col = 0 ; col < this.nCol ; col++) {
