@@ -23,7 +23,7 @@ public class DenseMatrix {
 	
 	
 	/**
-	 * 
+	 * Constructor get a array of vals
 	 * @param vals
 	 */
 	public DenseMatrix(double[][] vals) {
@@ -32,19 +32,38 @@ public class DenseMatrix {
 		this.nRow = vals.length;
 		this.nCol = vals[0].length;
 	}
+	/**
+	 * Constructor for creating a matrix of 
+	 * @param row
+	 * @param col
+	 */
 	public DenseMatrix(int row, int col) {
 		this.nRow = row;
 		this.nCol = col;
 		vals = new double[row][col];
 	}
 	
+	/**
+	 * get the row lenght
+	 * @return
+	 */
 	public int getRowDimension() {
 		return this.vals.length;
 	}
+	/**
+	 * get the col lenght
+	 * @return
+	 */
 	public int getColDimension() {
 		return this.vals[0].length;
 	}
-	
+	/**
+	 * Get a element in a position row,col
+	 * @param row
+	 * @param col
+	 * @return
+	 * @throws ExceptMatrix
+	 */
 	public double getElement(int row, int col) throws ExceptMatrix{
 		if(row < nCol ) {
 			if(row < nRow) {
@@ -56,6 +75,13 @@ public class DenseMatrix {
 		else
 			throw new ExceptMatrix("Col invalide");	
 	}
+	/**
+	 * Set a element in a position row, col
+	 * @param row
+	 * @param col
+	 * @param number
+	 * @throws ExceptMatrix
+	 */
 	public void setElement(int row, int col, double number) throws ExceptMatrix{
 		if(row < nCol ) {
 			if(row < nRow) {
@@ -67,7 +93,9 @@ public class DenseMatrix {
 		else
 			throw new ExceptMatrix("Col invalide");	
 	}
-	
+	/**
+	 * Write a matrix whith terminal
+	 */
 	public void write() {
 		for(int row = 0 ; row < this.nRow ; row++ ) {
 			for(int col = 0 ; col < this.nCol ; col++) {
@@ -76,7 +104,11 @@ public class DenseMatrix {
 			}
 		}
 	}
-	
+	/**
+	 * Return a string of format :
+	 * 0, 0
+	 * 0, 0
+	 */
 	public String toString() {
 		String matrix = new String();
 		for(int row = 0 ; row < this.nRow ; row++ ) {
